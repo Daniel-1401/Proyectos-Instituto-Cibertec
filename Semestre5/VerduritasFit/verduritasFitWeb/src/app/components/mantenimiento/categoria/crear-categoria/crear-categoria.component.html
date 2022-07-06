@@ -1,0 +1,35 @@
+<mat-card style="width: 350px; height: auto; margin: auto;">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title >CREAR CATEGORIA</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form #registerForm="ngForm">
+        <mat-form-field class="example-full-width" style="width: 100%;" appearance="fill">
+          <mat-label>Nombre de nueva categoria</mat-label>
+          <input matInput  type="text"
+          class="form-control"
+          [(ngModel)]="categoria.nombre_categoria"
+          name="nombreCategoria"
+          #nombreCategoria="ngModel"
+          required
+          minlength="5"/>
+          <div
+            class="alert alert-danger"
+            *ngIf="nombreCategoria.invalid && (nombreCategoria.dirty || nombreCategoria.touched)">
+            <div *ngIf="nombreCategoria.errors?.['required']">
+              Nombre de categoria es <strong>requerido</strong></div>
+          </div>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions >
+      <div class="">
+        <button mat-button
+          class="btn btn-primary"
+          role="button"
+          (click)="crearCategoria()"
+          [disabled]="!registerForm.form.valid">REGISTRAR</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>

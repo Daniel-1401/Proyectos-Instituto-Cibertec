@@ -1,0 +1,201 @@
+<div class="body d-flex py-lg-3 py-md-2">
+    <div class="container-xxl"  style="width: 100%">
+      <div class="row align-items-center">
+        <div class="border-0 mb-4">
+          <div
+            class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap"
+          >
+            <h3 class="fw-bold mb-0">Consultar Proveedor</h3>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row pb-2 d-flex justify-content-center">
+        <div class="row col-lg-4">
+          <div class="input-group rounded">
+            <input
+              type="text"
+              (keyup)="buscarRazonSocial()"
+              class="form-control rounded"
+              placeholder="Buscar Razon Social"
+              aria-label="Search"
+              [(ngModel)]="FiltrarRazonSocial"
+              aria-describedby="search-addon"
+            />
+          </div>
+        </div>
+        <div class="row col-lg-4">
+          <div class="input-group rounded">
+            <input
+              type="text"
+              (keyup)="buscarRuc()"
+              class="form-control rounded"
+              placeholder="Buscar Ruc del proveedor"
+              aria-label="Search"
+              [(ngModel)]="FiltrarRuc"
+              required
+                minlength="11"
+                maxlength="11"
+                pattern="[0-9]*"
+              aria-describedby="search-addon"
+            />
+          </div>
+        </div>
+      </div>
+  
+      <div class="row d-flex justify-content-center" style="margin-top: 2%">
+        <div class="row col-lg-3">
+          <mat-form-field appearance="fill" style="width: 100%">
+            <mat-label>Departamento</mat-label>
+            <mat-select
+              [formControl]="validDepartamento"
+              (selectionChange)="cargaProvincia()"
+              [(value)]="selDepartamento"
+              [(ngModel)]="selDepartamento"
+            >
+              <mat-option *ngFor="let aux of departamentos" value="{{ aux }}">{{
+                aux
+              }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="validDepartamento.hasError('required')"
+              >Debe seleccionar un Departamento</mat-error
+            >
+            <mat-error
+              *ngIf="
+                validDepartamento.hasError('pattern') &&
+                !validDepartamento.hasError('required')
+              "
+            >
+              Tu selección es inválida
+            </mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="row col-lg-3" *ngIf="selDepartamento != '-1'">
+          <mat-form-field appearance="fill" style="width: 100%">
+            <mat-label>Provincia</mat-label>
+            <mat-select
+              [formControl]="validProvincia"
+              (selectionChange)="cargaDistrito()"
+              [(value)]="selProvincia"
+              [(ngModel)]="selProvincia"
+            >
+              <mat-option *ngFor="let aux of provincias" value="{{ aux }}">{{
+                aux
+              }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="validProvincia.hasError('required')"
+              >Debe seleccionar una Provincia</mat-error
+            >
+            <mat-error
+              *ngIf="
+                validProvincia.hasError('pattern') &&
+                !validProvincia.hasError('required')
+              "
+            >
+              Tu selección es inválida
+            </mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="row col-lg-3" *ngIf="selProvincia != '-1'">
+          <mat-form-field appearance="fill" style="width: 100%">
+            <mat-label>Distrito</mat-label>
+            <mat-select
+              [formControl]="validDistrito"
+              (selectionChange)="filtrarUbigeo()"
+              [(value)]="selDistrito"
+              [(ngModel)]="selDistrito"
+            >
+              <mat-option
+                *ngFor="let aux of distritos"
+                value="{{ aux.idUbigeo }}"
+                >{{ aux.distrito }}</mat-option
+              >
+            </mat-select>
+            <mat-error *ngIf="validDistrito.hasError('required')"
+              >Debe seleccionar un Distrito</mat-error
+            >
+            <mat-error
+              *ngIf="
+                validDistrito.hasError('pattern') &&
+                !validDistrito.hasError('required')
+              "
+            >
+              Tu selección es inválida
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+  
+      <div class="row d-flex justify-content-center" style="margin-top: 2%">
+        <div class="row col-lg-3">
+          <label class="form-label text-secondary">Estado:</label>
+          <mat-radio-group
+            [(ngModel)]="selectedEstado"
+            (change)="cambioEstado()"
+          >
+            <mat-radio-button *ngFor="let esta of estados" [value]="esta.id">{{
+              esta.descripcion
+            }}</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+
+  
+      <div class="row"  style="width: 100%">
+        <div class="row clearfix g-3"  style="width: 100%">
+          <div class="col-sm-12">
+            <div class="card mx-1 my-3">
+              <div class="card-body">
+                <table
+                  id="myProjectTable"
+                  class="table table-hover align-middle mb-0"
+                  style="width: 100%"
+                >
+                  <thead class="text-center">
+                    <tr>
+                      <th>id</th>
+                      <th>Razon Social</th>
+                      <th>Ruc</th>
+                      <th>Direccion</th>
+                      <th>Telefono</th>
+                      <th>Celular</th>
+                      <th>Contacto</th>
+                      <th>Estado</th>
+                      <th>Ubigeo</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-center">
+                    <tr></tr>
+                    <tr *ngFor="let pro of proveedor">
+                      <td>{{pro.idProveedor }}</td>
+                      <td>{{pro.razonsocial }}</td>
+                      <td>{{pro.ruc }}</td>
+                      <td>{{pro.direccion }}</td>
+                      <td>{{pro.telefono }}</td>
+                      <td>{{pro.celular }}</td>
+                      <td>{{pro.contacto }}</td>
+                      <td>{{pro.estado }}</td>
+                      <td>
+                        {{pro.ubigeo?.departamento }} -
+                        {{pro.ubigeo?.provincia }} -
+  
+                        {{pro.ubigeo?.distrito }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+
+
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+

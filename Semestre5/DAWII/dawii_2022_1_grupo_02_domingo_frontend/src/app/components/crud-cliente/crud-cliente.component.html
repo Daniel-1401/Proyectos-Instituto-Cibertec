@@ -1,0 +1,133 @@
+<app-modal-crud 
+></app-modal-crud>
+
+<div class="body d-flex py-lg-3 py-md-2">
+    <div class="container-xxl"  style="width: 100%">
+      <div class="row align-items-center">
+        <div class="border-0 mb-4">
+          <div
+            class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap"
+          >
+            <h3 class="fw-bold mb-0">Consultar Cliente</h3>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row pb-2 d-flex justify-content-center">
+        <div class="row col-lg-4">
+          <div class="input-group rounded">
+            <input
+              type="text"
+              (keyup)="buscarNombre()"
+              class="form-control rounded"
+              placeholder="Buscar Nombre y Apellido Visitante"
+              aria-label="Search"
+              [(ngModel)]="filtroNombre"
+              aria-describedby="search-addon"
+            />
+          </div>
+        </div>
+        <div class="row col-lg-4">
+          <div class="input-group rounded">
+            <input
+              type="text"
+              (keyup)="buscarDNI()"
+              class="form-control rounded"
+              placeholder="Buscar DNI Visitante"
+              aria-label="Search"
+              [(ngModel)]="filtroDni"
+              aria-describedby="search-addon"
+            />
+          </div>
+        </div>
+        <div class="row col-lg-4">
+          <div class="input-group rounded">
+            <input
+              type="text"
+              (keyup)="buscarCorreo()"
+              class="form-control rounded"
+              placeholder="Buscar Correo Electronico"
+              aria-label="Search"
+              [(ngModel)]="filtroCorreo"
+              aria-describedby="search-addon"
+            />
+          </div>
+        </div>
+      </div>
+  
+  
+      <div class="row d-flex justify-content-center" style="margin-top: 2%">
+        <div class="row col-lg-3">
+          <label class="form-label text-secondary">Estado:</label>
+          <mat-radio-group
+            [(ngModel)]="selectedEstado"
+            (change)="buscarEstado()"
+          >
+            <mat-radio-button *ngFor="let esta of estados" [value]="esta.id">{{
+              esta.descripcion
+            }}</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div>
+            <button (click)="registrar()">Registrar</button>
+        </div>
+      </div>
+  
+      <div class="row"  style="width: 100%">
+        <!-- Row end  -->
+        <div class="row clearfix g-3"  style="width: 100%">
+          <div class="col-sm-12">
+            <div class="card mx-1 my-3">
+              <div class="card-body">
+                <table
+                  id="myProjectTable"
+                  class="table table-hover align-middle mb-0"
+                  style="width: 100%"
+                >
+                  <thead class="text-center">
+                    <tr>
+                      <th>id</th>
+                      <th>Nombre y Apellido</th>
+                      <th>DNI</th>
+                      <th>Fecha Nacimiento</th>
+                      <th>Correo</th>
+                      <th>Direccion</th>
+                      <th>Estado</th>
+                      <th>Ubigeo</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-center">
+                    <tr></tr>
+                    <tr *ngFor="let cli of clientes">
+                      <td>{{ cli.idCliente }}</td>
+                      <td>{{ cli.nombres }} {{ cli.apellidos }}</td>
+                      <td>{{ cli.dni }}</td>
+                      <td>{{ cli.fechaNacimiento | date: "dd/MM/yyyy" }}</td>
+                      <td>{{ cli.correo }}</td>
+                      <td>{{ cli.direccion }}</td>
+                      <td>
+                          <button type="button" *ngIf="cli.estado==1" class="btn btn-success" (click)="cambiarActive(cli)">activo</button>
+                          <button type="button" *ngIf="cli.estado==0" class="btn btn-danger" (click)="cambiarActive(cli)">inactivo</button>    
+                    </td>
+                      <td>
+                        {{ cli.ubigeo?.departamento }} -
+                        {{ cli.ubigeo?.provincia }} -
+  
+                        {{ cli.ubigeo?.distrito }}
+                      </td>
+                      <td>
+                          <button class="btn btn-primary btn-sm" (click)="actualizar(cli)">Editar</button>
+                          <button class="btn btn-danger btn-sm" (click)="eliminar(cli)">Delete</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!--FIN-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

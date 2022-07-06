@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="card bg-dark text-white">
+      <div class="card-header">Registro de Reclamo</div>
+      <div class="card-body">
+        <form #reclamoForm="ngForm">
+          <div class="form-group row mb-5">
+            <label for="" class="col-form-label col-sm-2">Descripcion del reclamo</label>
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="reclamo.descripcion"
+                name="nombre"
+                #descripcion="ngModel"
+                required
+                minlength="10"/>
+              <div
+                class="alert alert-danger"
+                *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+                <div *ngIf="descripcion.errors?.['required']">
+                  La descripcion del reclamo es requerido</div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="form-group row mb-4">
+            <label for="" class="col-form-label col-sm-2">Fecha de Compra</label            >
+            <div class="col-sm-6">
+              <input
+                type="date"
+                class="form-control"
+                [(ngModel)]="reclamo.fechaCompra"
+                name="fechaCompra"
+                #fechaCompra="ngModel"
+                required/>
+              <div
+                class="alert alert-danger"
+                *ngIf=" fechaCompra.invalid && (fechaCompra.dirty || fechaCompra.touched)">
+                <div *ngIf="fechaCompra.errors?.['required']">
+                  La fecha de compra es obligatorio
+                </div>
+              </div>
+            </div>
+          </div>
+            <div class="form-group row mb-3">
+                <label for="clientes" class="col-form-label col-sm-2">Clientes</label>
+                <div class="col-sm-6">
+                    <select
+                    id="clientes"
+                    name="clientes"
+                    class="form-control"
+                    [(ngModel)]="reclamo.cliente!.idCliente">
+                    <option value="-1">[Seleccione]</option>
+                    <option *ngFor="let cliente of clientes;" value="{{cliente.idCliente}}"> {{cliente.nombres}} </option>   
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                <label for="tipoReclamo" class="col-form-label col-sm-2">Tipo de Reclamo</label>
+                <div class="col-sm-6">
+                    <select
+                    id="tipoReclamo"
+                    name="tipoReclamo"
+                    class="form-control"
+                    [(ngModel)]="reclamo.tipoReclamo!.idTipoReclamo">
+                    <option value="-1"> [seleccione] </option>
+                    <option *ngFor="let tipoReclamo of tipoReclamos;" value="{{tipoReclamo.idTipoReclamo}}"> {{tipoReclamo.descripcion}} </option>   
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                <div class="">
+                  <button
+                    class="btn btn-primary"
+                    role="button"
+                    (click)="registrarReclamo()"
+                    [disabled]="!reclamoForm.form.valid">Crear</button>
+                </div>
+              </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+

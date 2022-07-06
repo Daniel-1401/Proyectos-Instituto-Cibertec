@@ -1,0 +1,127 @@
+<div class="container" style="margin-top: 100px">
+  <form #registerForm="ngForm" style="margin: 30px; width: 90%">
+    <h2 style="text-align: center; font-size: x-large">{{titulo}}</h2>
+    <div class="form-group" style="width: 100%; margin-top: 10px;">
+      <label for="nombre">Nombre</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="user.nombre"
+        placeholder="Ingrese nombre"
+        name="nombre"
+        #nombre="ngModel"
+        nombre="true"
+        required
+        minlength="3"
+      />
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+    >
+      <div *ngIf="nombre.errors?.['required']">
+        <p style="font-size: 14px">Correo es requerido.</p>
+      </div>
+      <div *ngIf="nombre.errors?.['minlength']">
+        <p style="font-size: 14px">
+          Debes tener minimo 3 caracteres
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="perfil">Perfil</label>
+      <select
+        id="perfil"
+        name="perfil"
+        class="form-control"
+        [(ngModel)]="user.perfil"
+        required
+        name="perfil"
+        #perfil="ngModel"
+        minlength="2"
+      >
+        <option *ngFor="let perfil of perfiles;" value="{{ perfil }}">
+          {{ perfil }}
+        </option>
+      </select>
+    </div>
+    <div
+        class="alert alert-danger"
+        *ngIf="perfil.invalid && (perfil.dirty || perfil.touched)"
+      >
+        <div>
+          <p style="font-size: 14px">
+            El perfil debe ser obligatorio
+          </p>
+        </div>
+    </div>
+   
+    <div class="form-group" style="width: 100%; margin-top: 10px;">
+      <label for="clave">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        [(ngModel)]="user.email"
+        placeholder="i000000000@cibertec.edu.pe"
+        name="email"
+        #email="ngModel"
+        email="true"
+        required
+        pattern="i+[0-9]+[0-9]+[0-9]+[0-9]+[0-9]+[0-9]+[0-9]+[0-9]+[0-9]@cibertec.edu.pe"
+      />
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="email.invalid && (email.dirty || email.touched)"
+    >
+      <div *ngIf="email.errors?.['required']">
+        <p style="font-size: 14px">Correo es requerido.</p>
+      </div>
+      <div *ngIf="email.errors?.['pattern']">
+        <p style="font-size: 14px">
+          Debes ingresar un correo electrónico válido de cibertec.
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        [(ngModel)]="user.clave"
+        placeholder="Password"
+        name="clave"
+        #clave="ngModel"
+        required
+        minlength="6"
+      />
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="clave.invalid && (clave.dirty || clave.touched)"
+    >
+      <div *ngIf="clave.errors?.['minlength']">
+        <p style="font-size: 14px">
+          La contraseña debe tener 6 caracteres como mínimo.
+        </p>
+      </div>
+      <div *ngIf="clave.errors?.['required']">
+        <p style="font-size: 14px">Clave es requerido.</p>
+      </div>
+    </div>
+
+    <div class="">
+      <button
+        class="btn btn-success"
+        role="button"
+        (click)="register()"
+        [disabled]="!registerForm.form.valid"
+        style="width: 100%"
+      >
+        Registrar
+      </button>
+    </div>
+  </form>
+</div>

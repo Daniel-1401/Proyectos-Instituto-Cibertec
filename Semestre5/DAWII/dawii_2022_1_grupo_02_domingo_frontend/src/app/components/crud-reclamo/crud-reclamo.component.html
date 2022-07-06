@@ -1,0 +1,131 @@
+<app-modal-crud-reclamo
+></app-modal-crud-reclamo>
+
+<div class="body d-flex py-lg-3 py-md-2">
+    <div class="container-xxl"  style="width: 100%">
+        <div class="row align-items-center">
+            <div class="border-0 mb-4">
+                <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+                    <h3 class="fw-bold mb-0">Consultar Reclamo</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pb-2 d-flex justify-content-center">
+            <div class="row col-lg-4" style="margin: auto;">
+                <div class="input-group rounded">
+                    <input
+                    type="text"
+                    (keyup)="buscarDescripcionClienteTipoReclamo()"
+                    class="form-control rounded"
+                    placeholder="Buscar Descripcion del reclamo"
+                    aria-label="Search"
+                    [(ngModel)]="filtroDescripcion"
+                    aria-describedby="search-addon"
+                    />
+                </div>
+            </div>
+        </div>
+        <div class="row pb-2 d-flex justify-content-center">
+            <div class="row col-lg-4" style="margin: auto;">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Clientes</mat-label>
+                    <mat-select
+                    [(value)]="selCliente"
+                    (selectionChange)="buscarDescripcionClienteTipoReclamo()"
+                    [(ngModel)]="selCliente">
+                        <mat-option value="-1">-Todos los clientes-</mat-option>
+                        <mat-option *ngFor="let cliente of clientes" value="{{ cliente.idCliente }}">{{cliente.nombres}} {{cliente.apellidos}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="row col-lg-4" style="margin: auto;">
+                <mat-form-field appearance="fill" style="width: 100%">
+                    <mat-label>Tipo de reclamo</mat-label>
+                    <mat-select
+                    [(value)]="selTipoReclamo"
+                    (selectionChange)="buscarDescripcionClienteTipoReclamo()"
+                    [(ngModel)]="selTipoReclamo">
+                        <mat-option value="-1">-Todos los tipos de reclamo-</mat-option>
+                        <mat-option *ngFor="let tipoReclamo of tiposReclamo" value="{{ tipoReclamo.idTipoReclamo }}">{{tipoReclamo.descripcion}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="row col-lg-4" style="margin: auto;">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter a date range</mat-label>
+                    <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                        <input matStartDate formControlName="start" placeholder="Start date" (dateChange)="obtenerFechaInicial()">
+                        <input matEndDate formControlName="end" placeholder="End date"(dateChange)="obtenerFechaFinal()">
+                    </mat-date-range-input>
+                    <mat-hint>YYYY-MM-DD – YYYY-MM-DD</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker" (click)="buscarRangoFechas()"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                </mat-form-field>
+              </div>
+        </div>
+        <div class="row d-flex justify-content-center" style="margin-top: 2%">
+            <div class="row col-lg-3">
+                <label class="form-label text-secondary">Estado:</label>
+                <mat-radio-group
+                    [(ngModel)]="selectedEstado"
+                    (change)="buscarEstado()">
+                    <mat-radio-button *ngFor="let esta of estados" [value]="esta.id">
+                        {{ esta.descripcion }}
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div>
+                <button (click)="registrar()">Registrar</button>
+            </div>
+        </div>
+
+        <div class="row"  style="width: 100%">
+            <!-- Row end  -->
+            <div class="row clearfix g-3"  style="width: 100%">
+                <div class="col-sm-12">
+                    <div class="card mx-1 my-3">
+                        <div class="card-body">
+                            <table
+                            id="myProjectTable"
+                            class="table table-hover align-middle mb-0"
+                            style="width: 100%">
+                                <thead class="text-center">
+                                    <tr>
+                                    <th>id</th>
+                                    <th>Descripcion</th>
+                                    <th>Fecha Registro</th>
+                                    <th>Estado</th>
+                                    <th>Fecha de Compra</th>
+                                    <th>Cliente</th>
+                                    <th>Tipo de Reclamo</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    <tr></tr>
+                                    <tr *ngFor="let recl of reclamos">
+                                    <td>{{ recl.idReclamo }}</td>
+                                    <td>{{ recl.descripcion }}</td>
+                                    <td>{{ recl.fechaRegistro | date: "yyyy-MM-dd" }}</td>
+                                    <td>
+                                        <button type="button" *ngIf="recl.estado==1" class="btn btn-success" (click)="cambiarActive(recl)">activo</button>
+                                        <button type="button" *ngIf="recl.estado==0" class="btn btn-danger" (click)="cambiarActive(recl)">inactivo</button>    
+                                    </td>
+                                    <td>{{ recl.fechaCompra | date: "yyyy-MM-dd" }}</td>
+                                    <td>{{ recl.cliente?.nombres }}</td>
+                                    <td>{{ recl.tipoReclamo?.descripcion }}</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm" style="width: 100%;" (click)="actualizar(recl)">Editar</button>
+                                        <button class="btn btn-danger btn-sm" style="width: 100%;" (click)="eliminar(recl.idReclamo!)">Delete</button>
+                                    </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!--FIN-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+    </div>
+</div>

@@ -1,0 +1,183 @@
+<p><strong>[Naim Hurtado]</strong></p>
+
+<div class="container">
+    <div class="card bg-dark text-white">
+      <div class="card-header">Registro Producto</div>
+      <div class="card-body">
+        <form #productoForm="ngForm">
+            <div class="form-group row mb-5">
+                <label for="nombre" class="col-form-label col-sm-2">Nombre del producto</label>
+                <div class="col-sm-6">
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="producto.nombre"
+                      name="nombre"
+                      #nombre="ngModel"
+                      required
+                    />
+                    <div
+                      class="alert alert-danger"
+                      *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+                    >
+                      <div *ngIf="nombre.errors?.['required']">
+                        El nombre del profucto es Requerido
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="form-group row mb-5">
+                <label for="serie" class="col-form-label col-sm-2">Serial git del producto</label>
+                <div class="col-sm-6">
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="producto.serie"
+                      name="serie"
+                      #serie="ngModel"
+                      required
+                    />
+                    <div
+                      class="alert alert-danger"
+                      *ngIf="serie.invalid && (serie.dirty || serie.touched)"
+                    >
+                      <div *ngIf="serie.errors?.['required']">
+                        La serie del producto es requerido
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="form-group row mb-5">
+              <label for="durabilidad" class="col-form-label col-sm-2">Durabilidad del producto</label>
+              <select
+                id="durabilidad"
+                name="durabilidad"
+                class="form-control"
+                [(ngModel)]="producto.durabilidad">
+                  <option value="Frágil">Frágil</option>
+                  <option value="Durable">Durable</option>
+              </select>
+
+            </div>
+
+            <div class="form-group row mb-4">
+              <label for="fechaBigencia" class="col-form-label col-sm-2">Fecha de vigencia</label>
+              <div class="col-sm-6">
+                <input
+                  type="date"
+                  class="form-control"
+                  [(ngModel)]="producto.fechaVigencia"
+                  name="fechaVigencia"
+                  #fechaVigencia="ngModel"
+                  required
+                />
+                <div
+                  class="alert alert-danger"
+                  *ngIf="
+                  fechaVigencia.invalid &&
+                    (fechaVigencia.dirty || fechaVigencia.touched)
+                  "
+                >
+                  <div *ngIf="fechaVigencia.errors?.['required']">
+                    La fecha de vigencia es obligatorio
+                  </div>
+                </div>
+              </div>
+            </div>
+                        
+            <div class="form-group row mb-2">
+              <label for="pais" class="col-form-label col-sm-2">País</label>
+              <div class="col-sm-6">
+                  <select
+                  id="pais"
+                  name="pais"
+                  class="form-control"
+                  [(ngModel)]="producto.pais!.idPais">
+                  <option value="-1"> [seleccione] </option>
+                  <option *ngFor="let pais of paises;" value="{{pais.idPais}}"> {{pais.nombre}} </option>   
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row mb-2">
+              <label for="marca" class="col-form-label col-sm-2">Marca</label>
+              <div class="col-sm-6">
+                  <select
+                  id="marca"
+                  name="marca"
+                  class="form-control"
+                  [(ngModel)]="producto.marca!.idMarca">
+                  <option value="-1"> [seleccione] </option>
+                  <option *ngFor="let marca of marcas;" value="{{marca.idMarca}}"> {{marca.nombre}} </option>   
+              </select>
+              </div>
+            </div>
+
+            <div class="form-group row mb-5">
+              <label for="stock" class="col-form-label col-sm-2">Stock</label>
+              <div class="col-sm-6">
+                <input
+                  type="number"
+                  class="form-control"
+                  [(ngModel)]="producto.stock"
+                  name="stock"
+                  #stock="ngModel"
+                  required
+                  min="1"
+                  pattern="[0-9]*"
+                />
+                <div
+                  class="alert alert-danger"
+                  *ngIf="stock.invalid && (stock.dirty || stock.touched)"
+                >
+                  <div *ngIf="stock.errors?.['required']">El STOCK es requerido</div>
+                  <div *ngIf="stock.errors?.['min']">
+                    El stock minimo es de 1
+                  </div>
+                  <div *ngIf="stock.errors?.['pattern']">
+                    El stock solo puede contener caracteres numéricos.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row mb-5">
+              <label for="precio" class="col-form-label col-sm-2">Precio</label>
+              <div class="col-sm-6">
+                <input
+                  type="number"
+                  class="form-control"
+                  [(ngModel)]="producto.precio"
+                  name="precio"
+                  #precio="ngModel"
+                  required
+                  min="0.01"
+                />
+                <div
+                  class="alert alert-danger"
+                  *ngIf="stock.invalid && (stock.dirty || stock.touched)"
+                >
+                  <div *ngIf="precio.errors?.['required']">El precio es requerido</div>
+                  <div *ngIf="precio.errors?.['min']">
+                    El PRECIO minimo es de 0.01 soles
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group d-flex justify-content-end mt-5">
+              <div class="">
+                <button
+                  class="btn btn-primary"
+                  role="button"
+                  (click)="registrarProducto()"
+                  [disabled]="!productoForm.form.valid"
+                >
+                  Crear
+                </button>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>
+<div>

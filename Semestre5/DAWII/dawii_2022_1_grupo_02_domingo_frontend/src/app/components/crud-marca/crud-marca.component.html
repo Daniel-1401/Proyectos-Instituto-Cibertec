@@ -1,0 +1,103 @@
+<app-modal-crud-marca 
+></app-modal-crud-marca>
+
+<div class="body d-flex py-lg-3 py-md-2">
+    <div class="container-xxl"  style="width: 100%">
+      <div class="row align-items-center">
+        <div class="border-0 mb-4">
+          <div
+            class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap"
+          >
+            <h2 class="fw-bold mb-0 ">CRUD Marca</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="row pb-2 d-flex justify-content-center">
+        <div class="row col-lg-4">
+          <div class="input-group rounded">
+            <input
+              type="text"
+              (keyup)="buscarNombre()"
+              class="form-control rounded"
+              placeholder="Buscar Nombre de la marca"
+              aria-label="Search"
+              [(ngModel)]="filtroNombre"
+              aria-describedby="search-addon"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row d-flex justify-content-center" style="margin-top: 2%">
+        <div class="row col-lg-3">
+          <label class="form-label text-secondary">Estado:</label>
+          <mat-radio-group
+            [(ngModel)]="selectedEstado"
+            (change)="buscarEstado()"
+          >
+            <mat-radio-button *ngFor="let esta of estados" [value]="esta.id">{{
+              esta.descripcion
+            }}</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div>
+            <button (click)="registrar()">Registrar</button>
+        </div>
+      </div>
+
+      <div class="row"  style="width: 100%">
+        <!-- Row end  -->
+        <div class="row clearfix g-3"  style="width: 100%">
+          <div class="col-sm-12">
+            <div class="card mx-1 my-3">
+              <div class="card-body">
+                <table
+                  id="myProjectTable"
+                  class="table table-hover align-middle mb-0"
+                  style="width: 100%"
+                >
+                  <thead class="text-center">
+                    <tr>
+                      <th>ID</th>
+                      <th>Nombre</th>
+                      <th>Descripcion</th>
+                      <th>Fecha Registro</th>
+                      <th>Fecha Vigencia</th>
+                      <th>Certificado</th>
+                      <th>Estado</th>
+                      <th>Pais</th>
+                      <th>Opciones</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-center">
+                    <tr></tr>
+                    <tr *ngFor="let mar of marca">
+                        <td>{{ mar.idMarca }}</td>
+                        <td>{{ mar.nombre }}</td>
+                        <td>{{ mar.descripcion }}</td>
+                        <td>{{ mar.fechaRegistro | date: "dd/MM/yyyy" }}</td>
+                        <td>{{ mar.fechaVigencia | date: "dd/MM/yyyy"}}</td>
+                        <td>{{ mar.certificado }}</td>
+                        <td>
+                          <button type="button" *ngIf="mar.estado==1" class="btn btn-success" (click)="cambiarActive(mar)">Activo</button>
+                          <button type="button" *ngIf="mar.estado==0" class="btn btn-danger" (click)="cambiarActive(mar)">Inactivo</button> 
+                        </td>
+                        <td>
+                          {{ mar.pais?.nombre }} 
+                        </td>
+                        <td>
+                          <button class="btn btn-primary btn-sm" (click)="actualizar(mar)">Editar</button>
+                          <button class="btn btn-danger btn-sm" (click)="eliminar(mar)">Delete</button>
+                      </td>
+                      </tr>
+                  </tbody>
+                </table>
+                <!--FIN-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

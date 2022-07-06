@@ -1,0 +1,239 @@
+<!--
+  VALIDATOR EN EL FORMULARIO
+  https://angular.io/api/forms/Validators
+-->
+<div class="container">
+  <div class="card bg-dark text-white">
+    <div class="card-header">{{ titulo }}</div>
+    <div class="card-body">
+      <form #clienteForm="ngForm">
+        <div class="form-group row mb-5">
+          <label for="" class="col-form-label col-sm-2">Nombre</label>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="cliente.nombres"
+              name="nombre"
+              #nombre="ngModel"
+              required
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+            >
+              <div *ngIf="nombre.errors?.['required']">
+                El nombre del visitante es Requerido
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row mb-5">
+          <label for="" class="col-form-label col-sm-2">Apellido</label>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="cliente.apellidos"
+              name="apellido"
+              #apellido="ngModel"
+              required
+            /><!-- -->
+            <div
+              class="alert alert-danger"
+              *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)"
+            >
+              <div *ngIf="apellido.errors?.['required']">
+                El apellido es requerido
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row mb-5">
+          <label for="" class="col-form-label col-sm-2">DNI</label>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="cliente.dni"
+              name="dni"
+              #dni="ngModel"
+              required
+              minlength="8"
+              maxlength="8"
+              pattern="[0-9]*"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="dni.invalid && (dni.dirty || dni.touched)"
+            >
+              <div *ngIf="dni.errors?.['required']">El DNI es requerido</div>
+              <div *ngIf="dni.errors?.['minlength']">
+                DNI debe tener 8 Caracteres.
+              </div>
+              <div *ngIf="dni.errors?.['maxlength']">
+                DNI debe tener 8 Caracteres.
+              </div>
+              <div *ngIf="dni.errors?.['pattern']">
+                El DNI solo puede contener caracteres numéricos.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row mb-5">
+          <label for="" class="col-form-label col-sm-2">Correo</label>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="cliente.correo"
+              name="correo"
+              #correo="ngModel"
+              required
+              email
+            /><!-- -->
+            <div
+              class="alert alert-danger"
+              *ngIf="correo.invalid && (correo.dirty || correo.touched)"
+            >
+              <div *ngIf="correo.errors?.['required']">
+                El Correo es requerido
+              </div>
+              <div *ngIf="correo.errors?.['email']">
+                Debe ingresar un correo válido
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row mb-5">
+          <label for="" class="col-form-label col-sm-2">Direccion</label>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="cliente.direccion"
+              name="direccion"
+              #direccion="ngModel"
+              required
+            /><!-- -->
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                direccion.invalid && (direccion.dirty || direccion.touched)
+              "
+            >
+              <div *ngIf="direccion.errors?.['required']">
+                La Dirección es requerido
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row mb-4">
+          <label for="" class="col-form-label col-sm-2"
+            >Fecha de nacimiento</label
+          >
+          <div class="col-sm-6">
+            <input
+              type="date"
+              class="form-control"
+              [(ngModel)]="cliente.fechaNacimiento"
+              name="fechaNacimiento"
+              #fechaNacimiento="ngModel"
+              required
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                fechaNacimiento.invalid &&
+                (fechaNacimiento.dirty || fechaNacimiento.touched)
+              "
+            >
+              <div *ngIf="fechaNacimiento.errors?.['required']">
+                La fecha de nacimeinto es obligatorio
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 3%">
+          <div class="col-lg-4">
+            <label for="departamento">Departamento</label>
+            <select
+              id="departamento"
+              name="departamento"
+              class="form-control"
+              [(ngModel)]="cliente.ubigeo!.departamento"
+              (change)="cargaProvincia()"
+            >
+              <option value="-1">[Seleccione]</option>
+              <option *ngFor="let aux of departamentos" value="{{ aux }}">
+                {{ aux }}
+              </option>
+            </select>
+          </div>
+
+          <div class="col-lg-4">
+            <label for="provincia">Provincia</label>
+            <select
+              id="provincia"
+              name="provincia"
+              class="form-control"
+              [(ngModel)]="cliente.ubigeo!.provincia"
+              (change)="cargaDistrito()"
+            >
+              <option value="-1">[Seleccione]</option>
+              <option *ngFor="let aux of provincias" value="{{ aux }}">
+                {{ aux }}
+              </option>
+            </select>
+          </div>
+
+          <div class="col-lg-4">
+            <label for="distrito">Distrito</label>
+            <select
+              id="distrito"
+              name="distrito"
+              class="form-control"
+              [(ngModel)]="cliente.ubigeo!.idUbigeo"
+              required
+              name="distrito"
+              #distrito="ngModel"
+              min="1"
+            >
+              <option value="-1">[Seleccione]</option>
+              <option *ngFor="let aux of distritos" value="{{ aux.idUbigeo }}">
+                {{ aux.distrito }}
+              </option>
+            </select>
+            <div
+              class="alert alert-danger"
+              *ngIf="distrito.invalid && (distrito.dirty || distrito.touched)"
+            >
+              <div *ngIf="distrito.errors?.['min']">
+                Distrito es obligatorio
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group d-flex justify-content-end mt-5">
+          <div class="">
+            <button
+              class="btn btn-primary"
+              role="button"
+              (click)="registrar()"
+              [disabled]="!clienteForm.form.valid"
+            >
+              Crear
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

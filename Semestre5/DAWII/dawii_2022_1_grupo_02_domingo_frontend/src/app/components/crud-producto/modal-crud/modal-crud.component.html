@@ -1,0 +1,138 @@
+<div class="abrir-modal animacion fadeIn" *ngIf="this.modalService.switchModalCrudProducto" (click)="cerrarModal()">
+  <div class="modal color-fondo d-flex justify-content-center align-items-center" tabindex="-1" role="dialog"
+    style="display: block">
+    <div class="modal-dialog modal-lg ancho-modal" role="document" (click)="$event.stopPropagation()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title text-success">{{ titulo }}</h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cerrarModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!--Inicio-->
+          <form #productoForm="ngForm">
+            <div class="form-group row">
+              <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="producto.nombre" name="nombre" id="nombre" required
+                  minlength="3" #nombre="ngModel">
+              </div>
+              <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div *ngIf="nombre.errors?.['required']">
+                  Nombre es requerido.
+                </div>
+                <div *ngIf="nombre.errors?.['minlength']">
+                  Nombre debe tener al menos 3 Caracteres.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="serie" class="col-form-label col-sm-2">Serial</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="producto.serie" name="serie"
+                  #serie="ngModel" required>
+              </div>
+              <div class="alert alert-danger" *ngIf="serie.invalid && (serie.dirty || serie.touched)">
+                <div *ngIf="serie.errors?.['required']">
+                  Serial es requerido.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="durabilidad" class="col-form-label col-sm-2">Durabilidad</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="producto.durabilidad" name="durabilidad"
+                  #durabilidad="ngModel" required>
+              </div>
+              <div class="alert alert-danger" *ngIf="durabilidad.invalid && (durabilidad.dirty || durabilidad.touched)">
+                <div *ngIf="durabilidad.errors?.['required']">
+                  Durabilidad es requerida.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="fechaVigencia" class="col-form-label col-sm-2">Fecha de Vigencia</label>
+              <div class="col-sm-6">
+                <input type="date" class="form-control" [(ngModel)]="producto.fechaVigencia" name="fechaVigencia" required
+                  date #fecha="ngModel">
+              </div>
+              <div class="alert alert-danger" *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)">
+                <div *ngIf="fecha.errors?.['required']">
+                  Fecha es requerida.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="precio" class="col-form-label col-sm-2">Precio</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="producto.precio" name="precio" required
+                  #precio="ngModel" required>
+              </div>
+              <div class="alert alert-danger" *ngIf="precio.invalid && (precio.dirty || precio.touched)">
+                <div *ngIf="precio.errors?.['required']">
+                  Precio es requerido.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="stock" class="col-form-label col-sm-2">Stock</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="producto.stock" name="stock" required
+                  #stock="ngModel" required>
+              </div>
+              <div class="alert alert-danger" *ngIf="stock.invalid && (stock.dirty || stock.touched)">
+                <div *ngIf="stock.errors?.['required']">
+                  Stock es requerido.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="marca" class="col-form-label col-sm-2">Marca</label>
+              <div class="col-sm-6">
+                <select id="marca" name="marca" class="form-control" [(ngModel)]="producto.marca!.idMarca">
+                  <option value="-1"> [Seleccione] </option>
+                  <option *ngFor="let aux of marca" value="{{aux.idMarca}}">
+                    {{aux.nombre}}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="pais" class="col-form-label col-sm-2">Pais</label>
+              <div class="col-sm-6">
+                <select id="pais" name="pais" class="form-control" [(ngModel)]="producto.pais!.idPais">
+                  <option value="-1"> [Seleccione] </option>
+                  <option *ngFor="let aux of pais" value="{{aux.idPais}}">
+                    {{aux.nombre}}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group d-flex justify-content-end mt-5">
+              <div class="">
+                <button class="btn btn-primary" role="button" *ngIf="producto.idProducto == null" (click)="registrar()"
+                  [disabled]="!productoForm.form.valid">
+                  Registrar
+                </button>
+                <button class="btn btn-primary" role="button" *ngIf="producto.idProducto != null" (click)="actualizar()"
+                  [disabled]="!productoForm.form.valid">
+                  Actualizar
+                </button>
+              </div>
+            </div>
+          </form>
+          <!--FIN-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

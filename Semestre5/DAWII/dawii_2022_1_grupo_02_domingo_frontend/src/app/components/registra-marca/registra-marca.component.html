@@ -1,0 +1,84 @@
+<div class="card bg-dark text-white">
+    <div class="card-header"></div>
+    <div class="card-body">
+
+        <form class="content" #marcaForm="ngForm">
+            <div class="form-group row">
+                <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="marca.nombre" name="nombre" id="nombre"
+                        required minlength="3" #nombre="ngModel">
+                </div>
+                <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                    <div *ngIf="nombre.errors?.['required']">
+                        Nombre es requerido.
+                    </div>
+                    <div *ngIf="nombre.errors?.['minlength']">
+                        Nombre debe tener al menos 3 Caracteres.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="Descripcion" class="col-form-label col-sm-2">Descripcion</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="marca.descripcion" name="descripcion"
+                        #descripcion="ngModel" required>
+                </div>
+                <div class="alert alert-danger"
+                    *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+                    <div *ngIf="descripcion.errors?.['required']">
+                        Descripcion es requerido.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="fechaVigencia" class="col-form-label col-sm-2">Fecha de Vigencia</label>
+                <div class="col-sm-6">
+                    <input type="date" class="form-control" [(ngModel)]="marca.fechaVigencia" name="fechaVigencia"
+                        required date #fecha="ngModel">
+                </div>
+                <div class="alert alert-danger" *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)">
+                    <div *ngIf="fecha.errors?.['required']">
+                        Fecha es requerida.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="certificado" class="col-form-label col-sm-2">Certificado</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="marca.certificado" name="certificado" required
+                        #certificado="ngModel" minlength="9" maxlength="9">
+                </div>
+                <div class="alert alert-danger"
+                    *ngIf="certificado.invalid && (certificado.dirty || certificado.touched)">
+                    <div *ngIf="certificado.errors?.['required']">
+                        Certificado es requerido.
+                    </div>
+                    <div *ngIf="certificado.errors?.['minlength']">
+                        Certificado debe tener 9 caracteres.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="pais" class="col-form-label col-sm-2">Pais</label>
+                <div class="col-sm-6">
+                    <select id="pais" name="pais" class="form-control" [(ngModel)]="marca.pais!.idPais">
+                        <option value="-1"> [Seleccione] </option>
+                        <option *ngFor="let aux of pais" value="{{aux.idPais}}" >
+                            {{aux.nombre}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <button class="btn btn-primary" role="button" (click)="registrarMarca()"
+                        [disabled]="!marcaForm.form.valid">Crear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

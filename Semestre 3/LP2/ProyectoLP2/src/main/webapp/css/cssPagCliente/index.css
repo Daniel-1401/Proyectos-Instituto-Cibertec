@@ -1,0 +1,53 @@
+.blockHome{
+    width: 1300px;
+    margin: auto;
+}
+.BannerHome{
+    margin-bottom: 60px;
+}
+.SubTitulo, .BannerProd{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.SubTitulo{
+    height: 60px;
+    border-bottom: 10px solid thistle;
+}
+.SubTitulo h2{
+    padding-top: 20px;
+    color: rgb(34, 37, 37)
+}
+.SubTitulo button{
+    width: 150px;
+    height: 40px;
+    margin: auto 10px;
+    background-color: rgb(218, 146, 13);
+    border-radius: 5px;
+}
+.BannerItem{
+    width: 300px;
+    height: 600px;
+    border: 0.5px solid rgb(223, 223, 223);
+    border-radius: 10px;
+}
+.BannerItem a{
+    text-decoration: none;
+}
+.ImgProducto{
+    height: 500px;
+    display: flex;
+}
+.ImagenProd{
+    margin: auto;
+}
+.DescripProducto, .PrecioProducto{
+    text-align: center;
+    font-size: x-large;
+}
+.DescripProducto{
+    color: rgb(63, 63, 63);
+}
+.PrecioProducto{
+    color: red;
+}

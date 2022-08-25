@@ -1,0 +1,75 @@
+main{
+    background-color: rgb(214, 214, 214);
+    display: flex;
+}
+
+section{
+    width: 300px;
+    background: rgb(231, 230, 230);
+}
+.accordion{
+    margin-top: 50px;
+}
+.contenido{
+    display: flex;
+    width: 1300px;
+    margin: 20px auto;
+}
+.filtros{
+    padding: 15px;
+}
+.toolBar{
+    margin: 10px;
+}
+.toolBar p, .OrderBy{
+    font-size: 25px;
+    justify-content: flex-end;
+    margin: auto auto auto 25px;
+    display: flex;
+}
+.OrderBy p{
+    margin-right: 20px;
+}
+.OrderBy select{
+    width: 230px;
+    font-size: 20px;
+}
+.CatalogoProductos{
+    width: 1000px;
+    background: rgb(255, 255, 255);
+}
+.Productos{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
+    background: rgb(224, 224, 224);
+}
+.ProductoItem{
+    width: 300px;
+    background: rgb(196, 195, 195);
+    margin: 10px;
+}
+.imagen, .imagen img{
+    width: 100%;
+}
+.infoItem{
+    margin: 5px ;
+}
+.infoItem h5{
+    margin-bottom: 2px ;
+}
+.info{
+    display: flex;
+    justify-content: space-between;
+}
+.botones{
+    margin-bottom: 10px;
+}
+.producto_categoria{
+    color: rgb(68, 53, 53);
+    font-size: 25px;
+    margin-bottom: 3px;
+}
+.producto_price{
+    color: rgb(104, 143, 162);
+}

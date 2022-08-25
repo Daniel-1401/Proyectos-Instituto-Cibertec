@@ -1,0 +1,49 @@
+
+.logoPag{
+    width: 200px;
+}
+body{
+    background: rgb(107, 121, 96);
+}
+main{
+    width: 350px;
+    /* height: 800px; */
+    margin: 300px auto;
+}
+form{
+    padding: 20px;
+    border: 2px solid rgb(129, 179, 138);
+    border-radius: 10px;
+    background: rgb(129, 179, 138);
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.35);
+}
+.titulo{
+    display: flex;
+    justify-content: flex-start;
+}
+/* h2{
+    margin: auto;
+} */
+.logo{
+    width: 120px;
+}
+.form-group{
+    display: flex;
+    margin: 20px 0px;
+}
+.Icon{
+    width: 50px;
+    height: 50px;
+}
+input{
+    height: 35px;
+    margin: auto;
+}
+.boton{
+    display: flex;
+    justify-content: flex-end;
+}
+.btn{
+    background: saddlebrown;
+    border:saddlebrown
+}

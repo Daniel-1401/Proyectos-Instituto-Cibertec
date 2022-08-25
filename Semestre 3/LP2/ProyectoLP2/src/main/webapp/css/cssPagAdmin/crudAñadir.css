@@ -1,0 +1,15 @@
+.contenido{
+    display: flex;
+}
+section{
+    margin: auto;
+}
+.columnas{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 48% 48%;
+    gap: 4%;
+}
+button{
+    width: 100%;
+}

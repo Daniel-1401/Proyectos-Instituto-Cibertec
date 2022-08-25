@@ -1,0 +1,11 @@
+footer{
+    min-width: 1350px;
+    height: 100px;
+    border-top: 10px solid red;
+}
+.pieDePagina, .pieDePagina div{
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px;
+}

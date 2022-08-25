@@ -1,0 +1,100 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background: rgb(107, 121, 96);
+}
+main{
+    width: 1455px;
+    margin: 5px auto;
+}
+.content{
+    display: grid;
+    grid-template-columns:300px 1100px;
+    grid-gap: 5px;
+    grid-auto-rows: minmax(100px, auto);
+    border: 1px solid rgb(129, 179, 138);
+    border-radius: 4px;
+    background: rgb(129, 179, 138);
+    box-shadow: 0px 1px 10px 1px rgba(0,0,0,0.35);
+}
+/* .logo, .usuario{
+    border-bottom: 5px solid blue;
+
+} */
+.imglogo{
+    width: 300px;
+    height: 120px;
+    border-radius: 5px;
+    margin: auto;
+}
+.usuario{
+    display: flex;
+    justify-content: flex-end;
+    margin: auto 30px auto 0px;
+}
+.iconUsuario{
+    display: flex;
+    margin: auto 0px;
+}
+.nombre{
+    display: flex;
+}
+.nombre h2{
+    margin: auto;
+}
+.iconUsuario img{
+    width: 60px;
+    height:  60px;
+    margin: auto 20px auto 0px;
+    border: 1px solid black;
+    border-radius: 50px;
+}
+.userMenu{
+    margin-top: 20px;
+}
+.userMenu h2{
+    text-align: center;
+}
+.imgUser{
+    display: flex;
+    margin-bottom: 25px;
+}
+.imgUser img{
+    width: 130px;
+    height: 130px;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 100%;
+}
+.menu{
+    border: 15px solid rgba(71, 89, 74, 0.481);
+    margin: 20px auto 20px auto;
+    padding-top: 10px;
+    min-height: 500px;
+}
+.accordion{
+   width: 240px;
+   margin: auto;
+   
+}
+.colorAccordion{
+    background: rgb(76, 133, 73);
+    /* background: red; */
+}
+.accordion-item{
+    margin-top: 20px;
+    
+}
+.accordion-body{
+    display: flex;
+   justify-content: flex-end;
+}
+.accordion-body li{
+    
+    list-style: none;
+}
+.contenidoPrincipal{
+    display: flex;
+}

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<taglib>
+
+   <tlibversion> 1.0 </tlibversion>
+   <jspversion> 1.0  </jspversion>
+   <shortname>tools</shortname>
+   
+   <tag>
+   <name> cboCat </name>
+   <tagclass> etiquetas.cboCategoria_Tag </tagclass>
+   <bodycontent> empty</bodycontent>
+   <info> Muestra las opciones del combo categoría </info>
+   </tag>
+   
+   <tag>
+   <name> cboCiudad </name>
+   <tagclass> etiquetas.cboCiudad_Tag </tagclass>
+   <bodycontent> empty</bodycontent>
+   <info> Muestra las opciones del combo ciudad </info>
+   </tag>
+   
+   
+   <tag>
+   <name> cboDisc </name>
+   <tagclass> etiquetas.cboDiscoDuro_Tag </tagclass>
+   <bodycontent> empty</bodycontent>
+   <info> Muestra las opciones del combo DiscoDuro </info>
+   </tag>
+   <tag>
+   <name> cboCPU</name>
+   <tagclass>etiquetas.cboCPU_Tag</tagclass>
+   <bodycontent> empty</bodycontent>
+   <info>Muestra las opciones del combo CPU</info>
+   </tag>
+   <tag>
+   <name> cboGPU </name>
+   <tagclass> etiquetas.cboGPU_Tag </tagclass>
+   <bodycontent> empty</bodycontent>
+   <info> Muestra las opciones del combo GPU </info>
+   </tag>
+   
+   <tag>
+   <name> cboMarca </name>
+   <tagclass> etiquetas.cboMarca_Tag </tagclass>
+   <bodycontent> empty</bodycontent>
+   <info> Muestra las opciones del combo Marca </info>
+   </tag>
+   
+   <tag>
+   <name> cboPais </name>
+   <tagclass> etiquetas.cboPais_Tag </tagclass>
+   <bodycontent> empty</bodycontent>
+   <info> Muestra las opciones del combo Pais </info>
+   </tag>
+   
+   <tag>
+   <name> cboSistOpera </name>
+   <tagclass> etiquetas.cboSistemaOperativo_Tag </tagclass>
+   <bodycontent> empty</bodycontent>
+   <info> Muestra las opciones del combo Sistema Operativo </info>
+   </tag>
+   
+   <tag>
+   <name> cboTipoDC </name>
+   <tagclass> etiquetas.cboTipoDiscoDuro_Tag </tagclass>
+   <bodycontent> empty</bodycontent>
+   <info> Muestra las opciones del combo Tipo Disco Duro </info>
+   </tag>
+   
+   <tag>
+   <name> cboTipoDoc </name>
+   <tagclass> etiquetas.cboTipoDocumento_Tag </tagclass>
+   <bodycontent> empty</bodycontent>
+   <info> Muestra las opciones del combo Tipo Documento </info>
+   </tag>
+   
+
+
+
+</taglib>

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="comart_ventas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="74db4d9a-5584-4978-91ee-d0ad28f32208">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[dHJhdmVsMjAyMS5jYXRlZ29yaWEgLDIwNSwxMDgsNjBjNjk3YzUtNjM0MC00MjFjLWE2YjAtMTIy
+OWMxNDFlODE0O3RyYXZlbDIwMjEucHJvZHVjdG9zICwxNSwxNSw3YjY0ZDJkMS04ZGUzLTQ1ZDQt
+OGYwNC0xYmQ1NjEzNmM2MjE7]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="368"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="623"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion-Comart"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT `nom_Categoria`,
+	travel2021.productos.`Id_Producto`,
+	travel2021.productos.`Nom_Producto`,
+	travel2021.productos.`PrecioUnidad`,
+	travel2021.productos.`Stock_Producto`,
+	travel2021.categoria.`nom_Categoria`
+FROM travel2021.productos
+	INNER JOIN travel2021.categoria ON 
+	 travel2021.productos.`cod_Categoria` = travel2021.categoria.`cod_Categoria`]]>
+	</queryString>
+	<field name="nom_Categoria" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nom_Categoria"/>
+		<property name="com.jaspersoft.studio.field.label" value="nom_Categoria"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="categoria"/>
+	</field>
+	<field name="Id_Producto" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Id_Producto"/>
+		<property name="com.jaspersoft.studio.field.label" value="Id_Producto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="productos"/>
+	</field>
+	<field name="Nom_Producto" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Nom_Producto"/>
+		<property name="com.jaspersoft.studio.field.label" value="Nom_Producto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="productos"/>
+	</field>
+	<field name="PrecioUnidad" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="PrecioUnidad"/>
+		<property name="com.jaspersoft.studio.field.label" value="PrecioUnidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="productos"/>
+	</field>
+	<field name="Stock_Producto" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Stock_Producto"/>
+		<property name="com.jaspersoft.studio.field.label" value="Stock_Producto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="productos"/>
+	</field>
+	<field name="COLUMN_6" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nom_Categoria"/>
+		<property name="com.jaspersoft.studio.field.label" value="nom_Categoria"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="categoria"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="90" splitType="Stretch">
+			<staticText>
+				<reportElement x="116" y="20" width="328" height="30" uuid="990dc5ae-614a-4ce1-a00a-700798f01731"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="18"/>
+				</textElement>
+				<text><![CDATA[LISTADO DE PRODUCTOS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="119" y="52" width="324" height="1" uuid="b98b2b60-5bfa-4f82-8940-ea339fbd2a31"/>
+			</line>
+			<image onErrorType="Icon">
+				<reportElement x="20" y="20" width="91" height="41" uuid="72e62016-c0c6-4e74-9ece-bfecd6c02e7e"/>
+				<imageExpression><![CDATA["/src/main/resources/static/img/title.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="70" height="30" forecolor="#FFFFFF" backcolor="#26B57E" uuid="4803fd4b-0853-4dcf-bfb8-5ae8724e91af">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b33dc50f-8705-4acf-83ab-4c3ec889db30"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="70" y="0" width="152" height="30" forecolor="#FFFFFF" backcolor="#26B57E" uuid="b4158b0e-c72e-4e96-b9b0-2a0b41e99768">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a4e99567-82c5-4421-80e6-521e8cee9237"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRODUCTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="222" y="0" width="111" height="30" forecolor="#FFFFFF" backcolor="#26B57E" uuid="4942c291-984d-478d-9b24-e645c1e580dd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="52a14593-c81d-4a29-bdea-a4761a37478e"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRECIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="445" y="0" width="111" height="30" forecolor="#FFFFFF" backcolor="#26B57E" uuid="59cc9939-f9cc-40b8-9e75-049fbfe4c20e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="abfb6bfc-f116-4076-8653-61281c8742ee"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CATEGORIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="334" y="1" width="110" height="29" forecolor="#FFFFFF" backcolor="#26B57E" uuid="08e0ea7e-e6f2-4a98-8f15-77efcba12025">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cbae153c-017e-41f9-a84a-13d3cc7db160"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[STOCK]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="70" height="30" uuid="0c8ab602-f993-4076-a20b-72fa57a94275">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b33dc50f-8705-4acf-83ab-4c3ec889db30"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id_Producto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="0" width="152" height="30" uuid="3be8e11f-10c5-41a0-a659-5be3ac69c71e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a4e99567-82c5-4421-80e6-521e8cee9237"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nom_Producto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="0" width="111" height="30" uuid="5f6d26c5-6af7-4dbf-bc9f-ae5f80da0f9d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="52a14593-c81d-4a29-bdea-a4761a37478e"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PrecioUnidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="0" width="111" height="30" uuid="6f632b2c-9891-445a-b303-68e4a4618d62">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="abfb6bfc-f116-4076-8653-61281c8742ee"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nom_Categoria}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="35" width="555" height="1" uuid="0219cc99-e6cf-4653-934c-f306bcd75326"/>
+			</line>
+			<textField>
+				<reportElement x="334" y="0" width="110" height="30" uuid="9fa5adff-3afa-40f1-9b15-bd218427f9f7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cbae153c-017e-41f9-a84a-13d3cc7db160"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Stock_Producto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="50">
+			<textField>
+				<reportElement x="178" y="14" width="100" height="30" uuid="0f572f9c-1e38-4f22-b51a-51f35661786a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="278" y="14" width="100" height="30" uuid="cea2817d-a383-467d-97b2-f20f47224231"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="27">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="18" uuid="3fed9674-98ca-4e67-87d0-af989895413c"/>
+				<text><![CDATA[Fecha de registro:]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy HH:mm a">
+				<reportElement x="100" y="0" width="100" height="16" uuid="e9edf9ce-9f5b-439f-86a1-967e8feeb659"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

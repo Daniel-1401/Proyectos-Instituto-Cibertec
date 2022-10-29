@@ -1,8 +1,0 @@
-1029;Programacion;3;21;30
-1234;Base De Datos;4;25;29
-4867;Habilidades Comunicativas;2;45;31
-5432;Ingles;2;15;25
-6452;Matematica;2;25;55
-6969;Seguridad Informatica;4;55;69
-9877;Fisica;2;30;60
-9999;Negocios;4;65;95
